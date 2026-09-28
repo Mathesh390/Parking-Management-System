@@ -1,0 +1,13 @@
+com\sece\parkspot\exception\GlobalExceptionHandler.class
+com\sece\parkspot\dto\EntryRequest.class
+com\sece\parkspot\repository\ParkingSlotRepository.class
+com\sece\parkspot\dto\ParkingSlotResponse.class
+com\sece\parkspot\controller\ParkingController.class
+com\sece\parkspot\entity\Visitor.class
+com\sece\parkspot\entity\ParkingSlot.class
+com\sece\parkspot\ParkspotApplication.class
+com\sece\parkspot\repository\VisitorRepository.class
+com\sece\parkspot\entity\Flat.class
+com\sece\parkspot\exception\ProjectNotFoundException.class
+com\sece\parkspot\repository\FlatRepository.class
+com\sece\parkspot\service\ParkingService.class

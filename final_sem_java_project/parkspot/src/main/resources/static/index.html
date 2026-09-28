@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="brand">
+                <span class="brand-icon">🅿️</span>
+                <span class="brand-text">ParkSpot</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#occupied-slots" class="nav-link">Occupied Slots</a>
+                <a href="#daily-log" class="nav-link">Daily Log</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+
+        <!-- Notification / Alert Container -->
+        <div id="toast" class="toast hidden"></div>
+
+        <!-- Section 1: Dashboard & Log Entry -->
+        <section id="home" class="section">
+            <div class="section-header">
+                <h2>Log Vehicle Entry</h2>
+                <p>Register visitor or resident vehicle entry into the parking lot.</p>
+            </div>
+
+            <div class="card form-card">
+                <form id="entryForm" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="vehicleNumber">Vehicle Number <span class="required">*</span></label>
+                            <input type="text" id="vehicleNumber" placeholder="e.g. KA-01-AB-1234" required />
+                            <small class="error-msg" id="vehicleNumberError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="flatVisited">Flat Visited <span class="required">*</span></label>
+                            <input type="text" id="flatVisited" placeholder="e.g. A-102" required />
+                            <small class="error-msg" id="flatVisitedError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="slotNumber">Slot Number <span class="required">*</span></label>
+                            <input type="number" id="slotNumber" min="1" placeholder="e.g. 15" required />
+                            <small class="error-msg" id="slotNumberError"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btnLogEntry" class="btn btn-primary">
+                            <span>Log Entry</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section 2: Occupied Slots -->
+        <section id="occupied-slots" class="section">
+            <div class="section-header flex-header">
+                <div>
+                    <h2>Occupied Slots</h2>
+                    <p>Live status of currently parked vehicles.</p>
+                </div>
+                <button id="btnRefreshOccupied" class="btn btn-secondary btn-sm">
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <div class="card table-card">
+                <div class="table-responsive">
+                    <table class="data-table" id="occupiedTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Vehicle Number</th>
+                                <th>Flat Number</th>
+                                <th>Slot Number</th>
+                                <th>Entry Time</th>
+                                <th>Exit Time</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="occupiedTableBody">
+                            <tr>
+                                <td colspan="7" class="loading-cell">Loading occupied slots...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Daily Log -->
+        <section id="daily-log" class="section">
+            <div class="section-header">
+                <h2>Daily Log</h2>
+                <p>Search and inspect historical parking records by date.</p>
+            </div>
+
+            <div class="card filter-card">
+                <form id="dailyLogForm" class="filter-form">
+                    <div class="form-group inline-group">
+                        <label for="logDate">Select Date:</label>
+                        <input type="date" id="logDate" required />
+                    </div>
+                    <button type="submit" id="btnViewLog" class="btn btn-accent">
+                        View Log
+                    </button>
+                </form>
+            </div>
+
+            <div class="card table-card">
+                <div class="table-responsive">
+                    <table class="data-table" id="dailyLogTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Vehicle Number</th>
+                                <th>Flat Number</th>
+                                <th>Slot Number</th>
+                                <th>Entry Time</th>
+                                <th>Exit Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dailyLogTableBody">
+                            <tr>
+                                <td colspan="6" class="loading-cell">Select a date to view logs...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Parking Management System | Built for College Project</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="js/script.js" defer></script>
+</body>
+</html>
